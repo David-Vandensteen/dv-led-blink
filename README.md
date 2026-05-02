@@ -1,4 +1,7 @@
-# Installation
+# dv_led_blink
+Simple Arduino library to blink an LED in a non-blocking way.
+
+## Installation
 
 ### Via Arduino Library Manager (recommended)
 1. Open the Arduino IDE
@@ -7,12 +10,9 @@
 4. Click Install
 
 ### Manual
-1. Download or clone this repository as a ZIP file.
+1. Download this repository as a ZIP file.
 2. In the Arduino IDE, go to Sketch > Include Library > Add .ZIP Library...
 3. Select the downloaded ZIP file to install the library.
-# dv_led_blink
-
-Simple Arduino library to blink an LED in a non-blocking way.
 
 ## Features
 - Non-blocking LED blinking (does not use delay)
@@ -20,14 +20,14 @@ Simple Arduino library to blink an LED in a non-blocking way.
 - Customizable interval and number of cycles
 - Forever mode with `DV_LedBlink::FOREVER`
 
-
 ## Usage
+
 
 ### Basic Example
 ```cpp
 #include <dv_led_blink.h>
 
-DV_LedBlink led(13); // Blink LED on pin 13 every 100ms (default)
+DV_LedBlink led(13); // Blink LED on pin 13 every 100ms (default) in a non-blocking way
 
 void setup() {}
 
@@ -36,11 +36,11 @@ void loop() {
 }
 ```
 
-### Interval Example
+### Cycle Example
 ```cpp
 #include <dv_led_blink.h>
 
-DV_LedBlink led(13, 250); // Blink LED on pin 13 every 250ms
+DV_LedBlink led(13, 500, 15); // Blink LED on pin 13 every 500ms for 15 cycles (non-blocking)
 
 void setup() {}
 
@@ -49,12 +49,11 @@ void loop() {
 }
 ```
 
-
-### Infinite Blink Example
+### Explicit Infinite Blink Example
 ```cpp
 #include <dv_led_blink.h>
 
-DV_LedBlink led(13, 50, DV_LedBlink::FOREVER); // Blink LED on pin 13 every 50ms, forever
+DV_LedBlink led(13, 50, DV_LedBlink::FOREVER); // Blink LED on pin 13 every 50ms in a non-blocking way
 
 void setup() {}
 

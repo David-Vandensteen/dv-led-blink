@@ -8,7 +8,7 @@ public:
   explicit DV_LedBlink();
   explicit DV_LedBlink(uint8_t pin);
   explicit DV_LedBlink(uint8_t pin, unsigned long interval);
-  explicit DV_LedBlink(uint8_t pin, unsigned long interval, uint8_t cycle = FOREVER);
+  explicit DV_LedBlink(uint8_t pin, unsigned long interval, uint8_t cycle);
   void update();
 
 private:

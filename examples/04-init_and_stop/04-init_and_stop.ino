@@ -6,7 +6,7 @@ DV_LedBlink led;
 
 void setup() {
   pinMode(buttonPin, INPUT_PULLUP);
-  led.init(ledPin, 200, DV_LedBlink::FOREVER); // Blink LED every 200ms, forever
+  led.init(ledPin, 200); // Blink LED every 200ms, forever
 }
 
 void loop() {
@@ -22,7 +22,7 @@ void loop() {
       led.stop();
     } else {
       fast = !fast;
-      led.init(ledPin, fast ? 50 : 200, DV_LedBlink::FOREVER); // Blink fast or slow
+      led.init(ledPin, fast ? 50 : 200); // Blink fast or slow
     }
   }
   wasPressed = pressed;

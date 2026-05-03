@@ -29,16 +29,19 @@ void DV_LedBlink::init(uint8_t pin) {
   init(pin, 100, FOREVER);
 }
 
-void DV_LedBlink::update() {
-  if (_state.cycle > 0 || _state.cycle == FOREVER) {
+bool DV_LedBlink::update() {
+  bool blinking = (_state.cycle > 0 || _state.cycle == FOREVER);
+  if (blinking) {
     unsigned long now = millis();
     if (now - _state.lastChange >= _state.interval) {
       _state.current = !_state.current;
       digitalWrite(_pin, _state.current);
       _state.lastChange = now;
       if (_state.current == LOW && _state.cycle != FOREVER) _state.cycle--;
+      blinking = (_state.cycle > 0 || _state.cycle == FOREVER);
     }
   }
+  return blinking;
 }
 
 void DV_LedBlink::stop() {

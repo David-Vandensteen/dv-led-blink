@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.1.0-rc] - 2026-05-03
+## [1.1.0]
 - Added init() methods for deferred initialization of DV_LedBlink objects.
 - Added stop() method to stop blinking and turn off the LED.
 - update() now returns a bool indicating if blinking is still active.

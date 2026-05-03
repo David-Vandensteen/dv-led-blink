@@ -27,7 +27,8 @@ Simple Arduino library to blink an LED in a non-blocking way.
 #include <Arduino.h>
 #include <dv_led_blink.h>
 
-DV_LedBlink led(13); // Blink LED on pin 13 every 100ms (default) in a non-blocking way
+DV_LedBlink led(); // Blink LED on pin LED_BUILTIN or 13 (default) every 100ms (default) in a non-blocking way
+// DV_LedBlink led(10); // Blink LED on pin 10 every 100ms (default) in a non-blocking way
 
 void setup() {}
 
@@ -56,7 +57,6 @@ void loop() {
 #include <dv_led_blink.h>
 
 DV_LedBlink led(13, 50); // Blink LED on pin 13 every 50ms in a non-blocking way
-
 // DV_LedBlink led(13, 50, DV_LedBlink::FOREVER); with explicit cycle parameter
 
 void setup() {}

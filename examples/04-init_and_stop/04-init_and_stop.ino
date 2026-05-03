@@ -1,7 +1,8 @@
+#include <Arduino.h>
 #include <dv_led_blink.h>
 
-const int ledPin = 13;
-const int buttonPin = 2;
+const uint8_t ledPin = 13;
+const uint8_t buttonPin = 2;
 DV_LedBlink led;
 
 void setup() {

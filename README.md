@@ -24,6 +24,7 @@ Simple Arduino library to blink an LED in a non-blocking way.
 
 ### Basic Example
 ```cpp
+#include <Arduino.h>
 #include <dv_led_blink.h>
 
 DV_LedBlink led(13); // Blink LED on pin 13 every 100ms (default) in a non-blocking way
@@ -37,6 +38,7 @@ void loop() {
 
 ### Cycle Example
 ```cpp
+#include <Arduino.h>
 #include <dv_led_blink.h>
 
 DV_LedBlink led(13, 500, 15); // Blink LED on pin 13 every 500ms for 15 cycles (non-blocking)
@@ -50,6 +52,7 @@ void loop() {
 
 ### Interval
 ```cpp
+#include <Arduino.h>
 #include <dv_led_blink.h>
 
 DV_LedBlink led(13, 50); // Blink LED on pin 13 every 50ms in a non-blocking way
@@ -65,34 +68,35 @@ void loop() {
 
 ### Init and Stop Example
 ```cpp
+#include <Arduino.h>
 #include <dv_led_blink.h>
 
-const int ledPin = 13;
-const int buttonPin = 2;
+const uint8_t ledPin = 13;
+const uint8_t buttonPin = 2;
 DV_LedBlink led;
 
 void setup() {
-	pinMode(buttonPin, INPUT_PULLUP);
-	led.init(ledPin, 200); // Blink LED every 200ms, forever
+  pinMode(buttonPin, INPUT_PULLUP);
+  led.init(ledPin, 200); // Blink LED every 200ms, forever
 }
 
 void loop() {
-	bool blinking = led.update();
+  bool blinking = led.update();
 
-	static bool wasPressed = false;
-	bool pressed = (digitalRead(buttonPin) == LOW);
+  static bool wasPressed = false;
+  bool pressed = (digitalRead(buttonPin) == LOW);
 
-	// On button press: stop if blinking, otherwise restart with another interval
-	if (pressed && !wasPressed) {
-		static bool fast = false;
-		if (blinking) {
-			led.stop();
-		} else {
-			fast = !fast;
-			led.init(ledPin, fast ? 50 : 200); // Blink fast or slow
-		}
-	}
-	wasPressed = pressed;
+  // On button press: stop if blinking, otherwise restart with another interval
+  if (pressed && !wasPressed) {
+    static bool fast = false;
+    if (blinking) {
+      led.stop();
+    } else {
+      fast = !fast;
+      led.init(ledPin, fast ? 50 : 200); // Blink fast or slow
+    }
+  }
+  wasPressed = pressed;
 }
 ```
 This example demonstrates how to use `stop()` to halt blinking and how to restart with a different interval on each button press.

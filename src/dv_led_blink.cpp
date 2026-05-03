@@ -25,4 +25,8 @@ void DV_LedBlink::update() {
       if (_state.current == LOW && _state.cycle != FOREVER) _state.cycle--;
     }
   }
+
+void DV_LedBlink::stop() {
+  _state.cycle = 0;
+  digitalWrite(_pin, LOW);
 }

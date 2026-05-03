@@ -39,6 +39,10 @@ void DV_LedBlink::init(uint8_t pin) {
   init(pin, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER);
 }
 
+void DV_LedBlink::init() {
+  init(DV_LED_BLINK_DEFAULT_PIN, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER);
+}
+
 bool DV_LedBlink::update() {
   bool blinking = (_state.cycle > 0 || _state.cycle == FOREVER);
   if (blinking) {

@@ -110,6 +110,7 @@ This example demonstrates how to use `stop()` to halt blinking and how to restar
 - `DV_LedBlink(uint8_t pin, unsigned long interval, uint8_t cycle)`
 
 **Methods:**
+- `void init()`
 - `void init(uint8_t pin)`
 - `void init(uint8_t pin, unsigned long interval)`
 - `void init(uint8_t pin, unsigned long interval, uint8_t cycle)`

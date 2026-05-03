@@ -9,7 +9,12 @@ public:
   explicit DV_LedBlink(uint8_t pin);
   explicit DV_LedBlink(uint8_t pin, unsigned long interval);
   explicit DV_LedBlink(uint8_t pin, unsigned long interval, uint8_t cycle);
-  void update();
+  void init(uint8_t pin, unsigned long interval, uint8_t cycle);
+  void init(uint8_t pin, unsigned long interval);
+  void init(uint8_t pin);
+  void init();
+  bool update();
+  void stop();
 
 private:
   struct State {

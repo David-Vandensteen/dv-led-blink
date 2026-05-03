@@ -1,9 +1,11 @@
 #include <Arduino.h>
 #include <dv_led_blink.h>
 
-DV_LedBlink::DV_LedBlink() : _pin(0), _state{LOW, 100, FOREVER, 0} {}
+#define DV_LED_BLINK_DEFAULT_INTERVAL 100
 
-DV_LedBlink::DV_LedBlink(uint8_t pin) : _pin(pin), _state{LOW, 100, FOREVER, 0} {
+DV_LedBlink::DV_LedBlink() : _pin(0), _state{LOW, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER, 0} {}
+
+DV_LedBlink::DV_LedBlink(uint8_t pin) : _pin(pin), _state{LOW, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER, 0} {
   pinMode(_pin, OUTPUT);
 }
 
@@ -26,7 +28,7 @@ void DV_LedBlink::init(uint8_t pin, unsigned long interval) {
 }
 
 void DV_LedBlink::init(uint8_t pin) {
-  init(pin, 100, FOREVER);
+  init(pin, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER);
 }
 
 bool DV_LedBlink::update() {

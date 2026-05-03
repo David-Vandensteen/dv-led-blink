@@ -10,7 +10,9 @@
 #endif
 
 DV_LedBlink::DV_LedBlink() : _pin(DV_LED_BLINK_DEFAULT_PIN), _state{LOW, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER, 0} {
-  pinMode(_pin, OUTPUT);
+  #ifdef LED_BUILTIN
+    pinMode(LED_BUILTIN, OUTPUT);
+  #endif
 }
 
 DV_LedBlink::DV_LedBlink(uint8_t pin) : _pin(pin), _state{LOW, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER, 0} {
@@ -40,7 +42,9 @@ void DV_LedBlink::init(uint8_t pin) {
 }
 
 void DV_LedBlink::init() {
-  init(DV_LED_BLINK_DEFAULT_PIN, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER);
+  #ifdef LED_BUILTIN
+    init(LED_BUILTIN, DV_LED_BLINK_DEFAULT_INTERVAL, FOREVER);
+  #endif
 }
 
 bool DV_LedBlink::update() {

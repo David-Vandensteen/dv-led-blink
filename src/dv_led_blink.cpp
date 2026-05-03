@@ -15,6 +15,20 @@ DV_LedBlink::DV_LedBlink(uint8_t pin, unsigned long interval, uint8_t cycle) : _
   pinMode(_pin, OUTPUT);
 }
 
+void DV_LedBlink::init(uint8_t pin, unsigned long interval, uint8_t cycle) {
+  _pin = pin;
+  _state = State(LOW, interval, cycle, 0);
+  pinMode(_pin, OUTPUT);
+}
+
+void DV_LedBlink::init(uint8_t pin, unsigned long interval) {
+  init(pin, interval, FOREVER);
+}
+
+void DV_LedBlink::init(uint8_t pin) {
+  init(pin, 100, FOREVER);
+}
+
 void DV_LedBlink::update() {
   if (_state.cycle > 0 || _state.cycle == FOREVER) {
     unsigned long now = millis();
@@ -25,6 +39,7 @@ void DV_LedBlink::update() {
       if (_state.current == LOW && _state.cycle != FOREVER) _state.cycle--;
     }
   }
+}
 
 void DV_LedBlink::stop() {
   _state.cycle = 0;

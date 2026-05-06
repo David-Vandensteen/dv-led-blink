@@ -13,6 +13,8 @@ public:
   void init(uint8_t pin, unsigned long interval);
   void init(uint8_t pin);
   void init();
+  void setInterval(unsigned long interval);
+  void setCycle(uint8_t cycle);
   bool update();
   void stop();
 

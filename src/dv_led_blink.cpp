@@ -47,6 +47,14 @@ void DV_LedBlink::init() {
   #endif
 }
 
+void DV_LedBlink::setInterval(unsigned long interval) {
+  _state.interval = interval;
+}
+
+void DV_LedBlink::setCycle(uint8_t cycle) {
+  _state.cycle = cycle;
+}
+
 bool DV_LedBlink::update() {
   bool blinking = (_state.cycle > 0 || _state.cycle == FOREVER);
   if (blinking) {

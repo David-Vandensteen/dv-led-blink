@@ -1,6 +1,6 @@
 # Changelog
 
-## [1.2.0-rc]
+## [1.2.0]
 
 - Added setInterval method
 - Added setCycle method

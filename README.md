@@ -114,6 +114,8 @@ This example demonstrates how to use `stop()` to halt blinking and how to restar
 - `void init(uint8_t pin)`
 - `void init(uint8_t pin, unsigned long interval)`
 - `void init(uint8_t pin, unsigned long interval, uint8_t cycle)`
+- `void setInterval(unsigned long interval)` — Change the blink interval on the fly
+- `void setCycle(uint8_t cycle)` — Set or reset the number of remaining cycles
 - `bool update()` — Call as often as possible in `loop()`, returns true if blinking is active
 - `void stop()` — Stops blinking and turns off the LED
 
